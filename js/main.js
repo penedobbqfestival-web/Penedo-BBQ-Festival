@@ -256,8 +256,21 @@
   }
   buildTicker('tickerTrack', tickerItems);
 
-  /* ---------- 4. Scroll reveal ---------- */
+  /* ---------- 4. Scroll reveal ----------
+     As animações repetem sempre que o elemento entra na tela (não só na
+     primeira vez). Quando a pessoa rola para cima, a animação entra do
+     lado/direção oposta à de quando desce — fica mais dinâmico e
+     intencional em vez de repetir sempre igual. */
   var revealEls = document.querySelectorAll('.reveal');
+  var scrollDirection = 'down';
+  var lastScrollY = window.scrollY;
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    if (y > lastScrollY + 2) scrollDirection = 'down';
+    else if (y < lastScrollY - 2) scrollDirection = 'up';
+    lastScrollY = y;
+  }, { passive: true });
+
   if ('IntersectionObserver' in window) {
     revealEls.forEach(function(el){
       var delay = el.getAttribute('data-reveal-delay');
@@ -265,9 +278,16 @@
     });
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
+        var el = entry.target;
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
+          el.classList.add('reveal--notransition'); // desliga a transição para trocar a direção sem animar
+          el.classList.toggle('reveal--reverse', scrollDirection === 'up');
+          void el.offsetWidth; // aplica a nova posição "escondida" instantaneamente
+          el.classList.remove('reveal--notransition'); // liga a transição de novo
+          void el.offsetWidth;
+          el.classList.add('is-visible');
+        } else {
+          el.classList.remove('is-visible');
         }
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });

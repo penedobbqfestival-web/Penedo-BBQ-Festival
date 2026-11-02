@@ -114,13 +114,20 @@ h1,h2,h3{ margin:0; font-weight:400; }
 }
 .img-tag.is-hidden{ display:none; }
 
-/* vídeo: slot cobre o player até existir um ficheiro real */
-.video-feature__frame{ position:relative; border-radius:18px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(0,0,0,.5); }
+/* vídeo: formato vertical (retrato), slot cobre o player até existir um ficheiro real */
+.video-feature__frame{
+  position:relative;
+  width:min(420px, 85vw);
+  margin:0 auto;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+}
 .video-feature__frame .img-slot{
   position:absolute; inset:0; z-index:2;
-  aspect-ratio:16/9;
+  aspect-ratio:9/16;
 }
-.video-feature__frame video{ position:relative; z-index:1; width:100%; display:block; background:#111; aspect-ratio:16/9; object-fit:cover; }
+.video-feature__frame video{ position:relative; z-index:1; width:100%; display:block; background:#111; aspect-ratio:9/16; object-fit:cover; }
 
 /* ---------- foto que "salta" ao passar o mouse ---------- */
 .photo-hover{
@@ -151,11 +158,6 @@ h1,h2,h3{ margin:0; font-weight:400; }
   pointer-events:none;
   z-index:2;
   mix-blend-mode:screen;
-}
-.ember-canvas--bleed{
-  /* desce além do fim da secção, "vazando" sobre o carrossel de fotos abaixo */
-  top:0; left:0; right:0; bottom:auto;
-  height:calc(100% + 220px);
 }
 @media (prefers-reduced-motion: reduce){
   .ember-canvas{ display:none; }
@@ -256,6 +258,17 @@ h1,h2,h3{ margin:0; font-weight:400; }
   color:var(--creme);
 }
 .section--dark .eyebrow{ color:var(--dourada); }
+
+/* textura jeans/denim, sutil — usada na secção Destino (Penedo) */
+.denim-bg{
+  background-color:#3d6184;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.05) 0px, rgba(255,255,255,.05) 1px, transparent 1px, transparent 4px),
+    repeating-linear-gradient(-45deg, rgba(0,0,0,.08) 0px, rgba(0,0,0,.08) 1px, transparent 1px, transparent 4px),
+    radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.04), transparent 65%),
+    linear-gradient(180deg, #46709a, #2d4a65);
+  background-blend-mode:normal, normal, screen, normal;
+}
 
 /* =========================================================
    MINI HEADER
@@ -422,7 +435,7 @@ h1,h2,h3{ margin:0; font-weight:400; }
   color:var(--creme);
   padding:clamp(60px,8vw,100px) 0;
   text-align:center;
-  overflow:visible;
+  overflow:hidden;
 }
 .countdown .container{
   position:relative;
@@ -1080,10 +1093,17 @@ h1,h2,h3{ margin:0; font-weight:400; }
 .reveal[data-reveal="fade-left"]{ transform:translateX(70px); }
 .reveal[data-reveal="fade-right"]{ transform:translateX(-70px); }
 .reveal[data-reveal="zoom"]{ transform:scale(.88); }
+/* ao rolar para cima, a animação entra do lado/direção oposta */
+.reveal.reveal--reverse[data-reveal="fade-up"]{ transform:translateY(-32px); }
+.reveal.reveal--reverse[data-reveal="fade-down"]{ transform:translateY(24px); }
+.reveal.reveal--reverse[data-reveal="fade-left"]{ transform:translateX(-70px); }
+.reveal.reveal--reverse[data-reveal="fade-right"]{ transform:translateX(70px); }
+.reveal.reveal--reverse[data-reveal="zoom"]{ transform:scale(1.1); }
 .reveal.is-visible{
   opacity:1;
   transform:none;
 }
+.reveal.reveal--notransition{ transition:none !important; }
 
 /* =========================================================
    RESPONSIVE
