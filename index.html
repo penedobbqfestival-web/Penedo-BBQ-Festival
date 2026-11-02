@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Penedo BBQ Festival · 04 de Setembro de 2027 · Penedo, RJ</title>
+<meta name="description" content="O maior festival de churrasco do estado do Rio de Janeiro. All inclusive premium em Penedo, RJ. 04 de setembro de 2027.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Alfa+Slab+One&family=Work+Sans:wght@400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ======= MINI HEADER (aparece ao rolar) ======= -->
+<header class="mini-header" id="miniHeader">
+  <div class="mini-header__inner">
+    <a href="#topo" class="mini-header__logo"><img src="assets/img/logo.png" alt="Penedo BBQ Festival"></a>
+    <a href="#presale" class="btn btn--sm btn--primary">Cadastro Pré-venda</a>
+  </div>
+</header>
+
+<!-- ======= PÁGINA 1 · CAPA (HERO) ======= -->
+<section class="hero" id="topo">
+  <!-- Espaço da foto de capa: já preenchido com assets/img/hero-bg.jpg (troque pelo ficheiro final na Hostinger) -->
+  <div class="hero__bg" id="heroBg" data-img="assets/img/hero-bg.jpg"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__grain"></div>
+  <canvas class="ember-canvas" id="emberHero" aria-hidden="true"></canvas>
+  <span class="img-tag" id="heroBgTag">📷 Foto de capa: assets/img/hero-bg.jpg</span>
+
+  <div class="hero__top container">
+    <!-- Espaço do logo: adicione assets/img/logo.png (fundo transparente) -->
+    <div class="hero__logo-slot img-slot reveal" data-reveal="fade-down" id="heroLogoSlot" data-img="assets/img/logo.png">
+      <span class="img-slot__label">🖼️ Logo<br><small>assets/img/logo.png</small></span>
+    </div>
+  </div>
+
+  <div class="hero__content container">
+    <h1 class="hero__title reveal" data-reveal="fade-up" data-reveal-delay="1">O maior <span class="highlight-dourada">festival de churrasco</span> do Rio de Janeiro</h1>
+    <p class="hero__subtitle reveal" data-reveal="fade-up" data-reveal-delay="2"><span class="script">Viva seu melhor momento</span> em <strong>04 de setembro</strong> de <strong>2027</strong></p>
+    <a href="#presale" class="btn btn--primary btn--lg reveal" data-reveal="fade-up" data-reveal-delay="3">Cadastro Pré-venda</a>
+  </div>
+
+  <div class="hero__scroll reveal" data-reveal="fade-up" data-reveal-delay="4">
+    <span></span>
+    <small>role para descobrir</small>
+  </div>
+</section>
+
+<!-- ======= PÁGINA 2 · CONTADOR ======= -->
+<section class="countdown leather-bg">
+  <div class="countdown__grain"></div>
+  <svg class="countdown__ox" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+    <path d="M300,150 C266,150 238,133 231,106 C170,92 70,78 10,15 C55,78 140,118 206,128
+      C182,140 165,162 161,190 C159,224 176,254 210,272 C236,286 266,294 300,296
+      C334,294 364,286 390,272 C424,254 441,224 439,190 C435,162 418,140 394,128
+      C460,118 545,78 590,15 C530,78 430,92 369,106 C362,133 334,150 300,150 Z
+      M255,172 a14,14 0 1,0 0.1,0 Z M345,172 a14,14 0 1,0 0.1,0 Z
+      M284,200 L316,200 L300,224 Z" fill="currentColor"/>
+  </svg>
+  <canvas class="ember-canvas ember-canvas--bleed" id="emberCountdown" aria-hidden="true"></canvas>
+  <div class="container">
+    <h2 class="countdown__title reveal" data-reveal="fade-left">Faltam</h2>
+    <div class="countdown__grid reveal" data-reveal="fade-up" data-reveal-delay="1" id="countdown" data-date="2027-09-04T11:00:00-03:00">
+      <div class="countdown__unit">
+        <span class="countdown__number" data-unit="days">00</span>
+        <span class="countdown__label">Dias</span>
+      </div>
+      <div class="countdown__unit">
+        <span class="countdown__number" data-unit="hours">00</span>
+        <span class="countdown__label">Horas</span>
+      </div>
+      <div class="countdown__unit">
+        <span class="countdown__number" data-unit="minutes">00</span>
+        <span class="countdown__label">Min</span>
+      </div>
+      <div class="countdown__unit">
+        <span class="countdown__number" data-unit="seconds">00</span>
+        <span class="countdown__label">Seg</span>
+      </div>
+    </div>
+    <p class="countdown__sub reveal" data-reveal="fade-up" data-reveal-delay="2">para viver o inesquecível</p>
+  </div>
+</section>
+
+<!-- ======= MARQUEE DE FOTOS 1 ======= -->
+<section class="marquee-wrap">
+  <!-- Espaço das fotos: adicione os 8 ficheiros em assets/img/gallery/g01.jpg ... g08.jpg -->
+  <div class="marquee">
+    <div class="marquee__track" id="marqueeTrack1"></div>
+  </div>
+</section>
+
+<!-- ======= PÁGINA 3 · VÍDEO ======= -->
+<section class="video-feature section">
+  <div class="video-feature__grain"></div>
+  <div class="container">
+    <h2 class="video-feature__title reveal" data-reveal="fade-left">
+      O maior <span class="highlight-red">festival de churrasco</span> do Rio de Janeiro
+    </h2>
+    <div class="video-feature__frame reveal photo-hover" data-reveal="zoom" data-reveal-delay="1">
+      <div class="img-slot" id="videoSlot">
+        <span class="img-slot__label">🎬 Vídeo do festival<br><small>assets/video/penedo-bbq-festival.mp4</small></span>
+      </div>
+      <video id="festivalVideo" poster="assets/img/video-poster.jpg" controls playsinline>
+        <source src="assets/video/penedo-bbq-festival.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ATRAÇÃO: MUNHOZ E MARIANO ======= -->
+<section class="attraction attraction--brown">
+  <div class="container attraction__inner">
+    <h2 class="attraction__title attraction__title--light reveal" data-reveal="fade-left">Uma das duplas mais <span class="highlight-dourada">amadas do Brasil</span></h2>
+    <!-- Card pronto (1916x821). Espaço da foto: assets/img/munhoz-mariano.png -->
+    <div class="attraction__card img-slot photo-hover reveal" data-reveal="zoom" data-reveal-delay="1" data-img="assets/img/munhoz-mariano.png">
+      <span class="img-slot__label">📷 Munhoz e Mariano<br><small>assets/img/munhoz-mariano.png</small></span>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ATRAÇÃO: JIMMY OGRO ======= -->
+<section class="attraction attraction--brown">
+  <div class="container attraction__split">
+    <div class="attraction__split-text">
+      <h2 class="attraction__title attraction__title--light reveal" data-reveal="fade-right">Um dos maiores nomes do churrasco no Brasil</h2>
+      <div class="attraction__bio reveal" data-reveal="fade-right" data-reveal-delay="1">
+        <p>Jimmy Ogro é chef, churrasqueiro e personalidade da TV brasileira. Há mais de 12 anos no Mais Você, da TV Globo, ao lado de Ana Maria Braga, ele percorre o Brasil descobrindo sabores, histórias e técnicas que conquistaram milhões de espectadores.</p>
+        <p>Reconhecido como embaixador da carne suína no Brasil, Jimmy também marca presença nos maiores eventos de fogo e brasa do país, levando sua experiência, suas técnicas e seu jeito único de transformar carne em espetáculo.</p>
+        <p>Agora, ele chega ao Penedo BBQ Festival para colocar sua assinatura no fogo.</p>
+      </div>
+    </div>
+    <div class="attraction__gallery attraction__gallery--col">
+      <!-- Espaço das 3 fotos do Jimmy Ogro -->
+      <div class="attraction__photo attraction__photo--sm img-slot photo-hover reveal" data-reveal="fade-left" data-reveal-delay="1" data-img="assets/img/jimmy-ogro-01.jpg">
+        <span class="img-slot__label">📷<br><small>jimmy-ogro-01.jpg</small></span>
+      </div>
+      <div class="attraction__photo attraction__photo--sm img-slot photo-hover reveal" data-reveal="fade-left" data-reveal-delay="2" data-img="assets/img/jimmy-ogro-02.jpg">
+        <span class="img-slot__label">📷<br><small>jimmy-ogro-02.jpg</small></span>
+      </div>
+      <div class="attraction__photo attraction__photo--sm img-slot photo-hover reveal" data-reveal="fade-left" data-reveal-delay="3" data-img="assets/img/jimmy-ogro-03.jpg">
+        <span class="img-slot__label">📷<br><small>jimmy-ogro-03.jpg</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PÁGINA 4 · POR QUE NÃO PODE FICAR DE FORA ======= -->
+<section class="story section section--dark">
+  <div class="container">
+    <h2 class="section-title reveal" data-reveal="fade-left">
+      Por que você não pode<br>ficar de fora?
+    </h2>
+    <div class="story__grid">
+      <div class="story__text reveal" data-reveal="fade-right" data-reveal-delay="1">
+        <p>
+          O <strong>Penedo BBQ Festival</strong> é o maior festival de churrasco do estado do Rio de Janeiro.
+          São 08h de open bar e 08h de open food: os melhores cortes de carnes premium, bebidas selecionadas e tudo
+          à vontade, do início ao fim do dia. Uma experiência pensada para reunir boa carne, boa companhia
+          e um cenário que você não esquece.
+        </p>
+        <div class="about__meta">
+          <span>📅 04 de setembro de 2027</span>
+          <span>📍 Penedo · Itatiaia, RJ</span>
+        </div>
+      </div>
+      <ul class="story__checklist">
+        <li class="reveal" data-reveal="zoom" data-reveal-delay="1"><span class="story__check">✓</span>Cortes premium</li>
+        <li class="reveal" data-reveal="zoom" data-reveal-delay="2"><span class="story__check">✓</span>Hospedagem de charme</li>
+        <li class="reveal" data-reveal="zoom" data-reveal-delay="3"><span class="story__check">✓</span>Bebidas selecionadas à vontade</li>
+        <li class="reveal" data-reveal="zoom" data-reveal-delay="4"><span class="story__check">✓</span>Carnes à vontade</li>
+        <li class="reveal" data-reveal="zoom" data-reveal-delay="5"><span class="story__check">✓</span>08h de open bar e 08h de open food</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======= OPEN BAR / OPEN FOOD ======= -->
+<section class="openbar">
+  <div class="container openbar__inner">
+    <!-- Espaço da foto: adicione assets/img/openbar.jpg -->
+    <div class="openbar__media img-slot photo-hover reveal" data-reveal="fade-right" data-img="assets/img/openbar.jpg">
+      <span class="img-slot__label">📷 Open bar / open food<br><small>assets/img/openbar.jpg</small></span>
+    </div>
+    <h3 class="openbar__title reveal" data-reveal="fade-left" data-reveal-delay="1">O melhor open bar e open food do Rio de Janeiro</h3>
+  </div>
+</section>
+
+<!-- ======= PÁGINA 5 · AUTORIDADE ======= -->
+<section class="authority">
+  <div class="container">
+    <h2 class="authority__title reveal" data-reveal="fade-left">
+      O MAIOR <span class="highlight">FESTIVAL DE CHURRASCO</span><br>
+      DO RIO DE JANEIRO.
+    </h2>
+    <p class="authority__sub reveal" data-reveal="fade-up" data-reveal-delay="1">
+      Agora com 08h de open bar e 08h de open food, em um dos destinos mais procurados da serra fluminense.
+    </p>
+  </div>
+</section>
+
+<!-- ======= TUDO INCLUSO ======= -->
+<section class="allin section">
+  <div class="container">
+    <h2 class="section-title section-title--center reveal" data-reveal="fade-left">
+      Tudo incluso no valor<br>do seu ingresso.
+    </h2>
+    <p class="allin__sub reveal" data-reveal="fade-up" data-reveal-delay="2">Porque o Penedo BBQ Festival é viver o seu melhor momento.</p>
+
+    <div class="allin__grid">
+      <div class="allin__card reveal" data-reveal="zoom" data-reveal-delay="1">
+        <div class="allin__photo img-slot photo-hover" data-img="assets/img/allin-01.jpg">
+          <span class="img-slot__label">📷<br><small>allin-01.jpg</small></span>
+        </div>
+        <h3>Cortes Premium</h3>
+        <p>Picanha Black Angus, Tomahawk, Chorizo, T-Bone e muito mais, preparados pelos chefes mais renomados.</p>
+      </div>
+      <div class="allin__card reveal" data-reveal="zoom" data-reveal-delay="2">
+        <div class="allin__photo img-slot photo-hover" data-img="assets/img/allin-02.jpg">
+          <span class="img-slot__label">📷<br><small>allin-02.jpg</small></span>
+        </div>
+        <h3>Open Bar</h3>
+        <p>Bebidas selecionadas em todo o momento do festival (chopp, refrigerantes e água) para você viver um momento inesquecível.</p>
+      </div>
+      <div class="allin__card reveal" data-reveal="zoom" data-reveal-delay="3">
+        <div class="allin__photo img-slot photo-hover" data-img="assets/img/allin-03.jpg">
+          <span class="img-slot__label">📷<br><small>allin-03.jpg</small></span>
+        </div>
+        <h3>Opções Gastronômicas Variadas</h3>
+        <p>Acompanhamentos, hambúrgueres e o melhor para deixar seu momento ainda melhor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FAIXA DIVISÓRIA (ticker) ======= -->
+<section class="ticker">
+  <div class="marquee marquee--ticker">
+    <div class="marquee__track" id="tickerTrack"></div>
+  </div>
+</section>
+
+<!-- ======= MARQUEE DE FOTOS 2 ======= -->
+<section class="marquee-wrap marquee-wrap--reverse">
+  <div class="marquee">
+    <div class="marquee__track" id="marqueeTrack2"></div>
+  </div>
+</section>
+
+<!-- ======= PÁGINA 6 · DESTINO: PENEDO ======= -->
+<section class="destination section section--dark">
+  <div class="container destination__grid">
+    <div class="destination__text">
+      <p class="eyebrow eyebrow--caps">O destino</p>
+      <h2 class="section-title reveal" data-reveal="fade-left">Penedo: a serra<br>que recebe você.</h2>
+      <p class="destination__body">
+        Penedo é o maior polo cultural e turístico do Rio de Janeiro, cercado pela Serra da Mantiqueira.
+        São mais de 70 hotéis e chalés, uma colônia com raízes na Finlândia e uma gastronomia própria
+        que poucos lugares do Brasil oferecem. O festival acontece dentro desse cenário, com ar puro,
+        natureza por todos os lados e tempo de sobra para aproveitar com calma.
+      </p>
+      <ul class="destination__facts">
+        <li class="reveal" data-reveal="fade-right" data-reveal-delay="1">Vista para a Serra da Mantiqueira</li>
+        <li class="reveal" data-reveal="fade-right" data-reveal-delay="2">+70 hotéis e chalés</li>
+        <li class="reveal" data-reveal="fade-right" data-reveal-delay="3">Gastronomia finlandesa</li>
+        <li class="reveal" data-reveal="fade-right" data-reveal-delay="4">Natureza em todas as direções</li>
+      </ul>
+    </div>
+    <div class="destination__media reveal photo-hover" data-reveal="fade-left">
+      <!-- Espaço da foto: adicione o ficheiro em assets/img/penedo-serra.jpg (vertical, 4:5) -->
+      <div class="destination__photo img-slot" id="destPhoto" data-img="assets/img/penedo-serra.jpg">
+        <span class="img-slot__label">📷 Foto de Penedo / serra<br><small>assets/img/penedo-serra.jpg</small></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Galeria de pontos turísticos de Penedo: espaço reservado para 5 fotos -->
+  <div class="container">
+    <div class="destination__gallery">
+      <div class="destination__gphoto img-slot photo-hover reveal" data-reveal="zoom" data-reveal-delay="1" data-img="assets/img/penedo-cachoeira.jpg">
+        <span class="img-slot__label">📷 Cachoeira<br><small>penedo-cachoeira.jpg</small></span>
+      </div>
+      <div class="destination__gphoto img-slot photo-hover reveal" data-reveal="zoom" data-reveal-delay="2" data-img="assets/img/penedo-chales.jpg">
+        <span class="img-slot__label">📷 Chalés parceiros<br><small>penedo-chales.jpg</small></span>
+      </div>
+      <div class="destination__gphoto img-slot photo-hover reveal" data-reveal="zoom" data-reveal-delay="3" data-img="assets/img/penedo-serra-2.jpg">
+        <span class="img-slot__label">📷 Serra<br><small>penedo-serra-2.jpg</small></span>
+      </div>
+      <div class="destination__gphoto img-slot photo-hover reveal" data-reveal="zoom" data-reveal-delay="4" data-img="assets/img/penedo-papai-noel.jpg">
+        <span class="img-slot__label">📷 Casa do Papai Noel<br><small>penedo-papai-noel.jpg</small></span>
+      </div>
+      <div class="destination__gphoto img-slot photo-hover reveal" data-reveal="zoom" data-reveal-delay="5" data-img="assets/img/penedo-turistico.jpg">
+        <span class="img-slot__label">📷 Ponto turístico<br><small>penedo-turistico.jpg</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PÁGINA 7 · PATROCINADORES ======= -->
+<section class="sponsors section section--dark">
+  <div class="container">
+    <h2 class="section-title section-title--center reveal" data-reveal="fade-left">Patrocinadores que fazem parte dessa história</h2>
+  </div>
+  <div class="marquee marquee--sponsors">
+    <!-- Espaço dos logos: adicione os PNGs em assets/img/sponsors/ (nomes no js/main.js) -->
+    <div class="marquee__track" id="sponsorsTrack"></div>
+  </div>
+</section>
+
+<!-- ======= DEPOIMENTOS ======= -->
+<section class="testimonials leather-bg leather-bg--strong">
+  <div class="testimonials__grain grain-overlay"></div>
+  <div class="container">
+    <h2 class="testimonials__title section-title reveal" data-reveal="fade-left">
+      Vale a pena viver seu momento único no Penedo BBQ Festival?
+      <span class="script">Veja o que o público diz</span>
+    </h2>
+  </div>
+  <!-- Espaço dos depoimentos: adicione os prints em assets/img/testimonials/t01.jpg ... t08.jpg -->
+  <div class="marquee marquee--testimonials">
+    <div class="marquee__track" id="testimonialsTrack"></div>
+  </div>
+</section>
+
+<!-- ======= FAQ ======= -->
+<section class="faq section">
+  <div class="container">
+    <h2 class="section-title section-title--center reveal" data-reveal="fade-left">Tudo o que você precisa saber</h2>
+    <p class="faq__note">Perguntas a confirmar com o cliente — estrutura já pronta para receber o conteúdo final.</p>
+    <div class="faq__list">
+      <details class="faq__item reveal" data-reveal="fade-up" data-reveal-delay="1">
+        <summary>Pergunta 1 (a definir)</summary>
+        <p>Resposta a ser definida com o cliente.</p>
+      </details>
+      <details class="faq__item reveal" data-reveal="fade-up" data-reveal-delay="2">
+        <summary>Pergunta 2 (a definir)</summary>
+        <p>Resposta a ser definida com o cliente.</p>
+      </details>
+      <details class="faq__item reveal" data-reveal="fade-up" data-reveal-delay="3">
+        <summary>Pergunta 3 (a definir)</summary>
+        <p>Resposta a ser definida com o cliente.</p>
+      </details>
+      <details class="faq__item reveal" data-reveal="fade-up" data-reveal-delay="4">
+        <summary>Pergunta 4 (a definir)</summary>
+        <p>Resposta a ser definida com o cliente.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PÁGINA 8 · CTA FINAL / PRÉ-VENDA ======= -->
+<section class="presale" id="presale">
+  <div class="presale__grain"></div>
+  <canvas class="ember-canvas" id="emberPresale" aria-hidden="true"></canvas>
+  <div class="container presale__inner">
+    <p class="eyebrow eyebrow--light reveal" data-reveal="fade-up">Garanta seu lugar</p>
+    <h2 class="presale__title reveal" data-reveal="fade-left" data-reveal-delay="1">
+      No maior festival de churrasco<br>do Rio de Janeiro.
+    </h2>
+    <p class="presale__date reveal" data-reveal="fade-up" data-reveal-delay="2">04 de setembro de 2027 · Penedo, RJ</p>
+
+    <a href="https://byma.com.br/penedobbqfestival" target="_blank" rel="noopener" class="btn btn--primary btn--lg reveal" data-reveal="fade-up" data-reveal-delay="3">Cadastro Pré-venda</a>
+    <div class="presale__secondary reveal" data-reveal="fade-up" data-reveal-delay="4">
+      <a href="https://whatsapp.com/channel/0029VbDsqWdFCCodsfITEh16" target="_blank" rel="noopener" class="btn btn--ghost">Entrar para Nossa Comunidade</a>
+    </div>
+    <p class="presale__note reveal" data-reveal="fade-up" data-reveal-delay="5">A pré-venda abre em breve. Cadastre-se para ser avisado em primeira mão.</p>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <img class="footer__logo" src="assets/img/logo.png" alt="Penedo BBQ Festival">
+    <p class="footer__legal">© 2027 Penedo BBQ Festival. Todos os direitos reservados.</p>
+    <div class="footer__links">
+      <!-- TODO: adicionar o link real da política de privacidade -->
+      <a href="https://www.instagram.com/penedobbqfestival?exln=a3h3emFoMTl5OWs0" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/5524992882896" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#">Política de Privacidade</a>
+    </div>
+    <a href="#topo" class="footer__top">Voltar ao topo ↑</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
