@@ -125,11 +125,14 @@ h1,h2,h3{ margin:0; font-weight:400; }
   overflow:hidden;
   box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
 }
-.video-feature__frame .img-slot{
-  position:absolute; inset:0; z-index:2;
+.video-feature__frame iframe{
+  position:relative; z-index:1;
+  width:100%;
   aspect-ratio:9/16;
+  display:block;
+  background:#111;
+  border:0;
 }
-.video-feature__frame video{ position:relative; z-index:1; width:100%; display:block; background:#111; aspect-ratio:9/16; object-fit:cover; }
 
 /* ---------- foto que "salta" ao passar o mouse ---------- */
 .photo-hover{

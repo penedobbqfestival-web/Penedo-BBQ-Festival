@@ -49,14 +49,6 @@
     fillImageSlot(attractionBg);
   }
 
-  var videoSlot = document.getElementById('videoSlot');
-  var festivalVideo = document.getElementById('festivalVideo');
-  if (videoSlot && festivalVideo) {
-    festivalVideo.addEventListener('loadeddata', function(){
-      videoSlot.classList.add('is-filled');
-    });
-  }
-
   /* ---------- 1. Mini header ao rolar ---------- */
   var miniHeader = document.getElementById('miniHeader');
   var hero = document.querySelector('.hero');

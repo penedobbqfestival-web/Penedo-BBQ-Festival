@@ -42,13 +42,12 @@ assets/img/penedo-serra-2.jpg   - pousada/jardim com lago
   estavam na galeria do site. Deixei as 3 como enviadas; avisa se
   quiseres trocar alguma por uma foto dele especificamente.
 
-AINDA FALTA
------------
-assets/img/video-poster.jpg
-  -> capa/thumbnail do video (pagina 3).
-
-assets/video/penedo-bbq-festival.mp4
-  -> video de divulgacao do festival (formato mp4, H.264).
+VIDEO (pagina 3)
+----------------
+Em vez de arquivo de video local, a secao usa um embed do YouTube
+(iframe apontando para youtube-nocookie.com/embed/<ID>). O video atual
+e o Short enviado pelo cliente via Asana. Para trocar o video no futuro,
+basta editar o "src" do iframe em index.html (secao "PAGINA 3 - VIDEO").
 
 FAQ
 ---
