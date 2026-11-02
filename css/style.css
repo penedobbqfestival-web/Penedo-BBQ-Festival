@@ -333,8 +333,8 @@ h1,h2,h3{ margin:0; font-weight:400; }
   margin-bottom:clamp(24px, 7vh, 72px);
 }
 .hero__logo-slot{
-  width:min(280px, 46vw); /* logo real é larga (~2.1:1), não quadrada */
-  aspect-ratio:500/237;
+  width:min(440px, 70vw); /* logo real é larga e baixa (~4.1:1) */
+  aspect-ratio:1653/400;
   background-size:contain;
   background-repeat:no-repeat;
   background-position:center;
@@ -1121,7 +1121,7 @@ h1,h2,h3{ margin:0; font-weight:400; }
   .about__grid, .destination__grid, .story__grid, .openbar__inner{ grid-template-columns:1fr; }
   .destination__media{ order:-1; }
   .allin__grid{ grid-template-columns:1fr; }
-  .hero__logo-slot{ width:min(200px, 56vw); }
+  .hero__logo-slot{ width:min(300px, 78vw); }
   .destination__gallery{ grid-template-columns:repeat(2,1fr); }
   .attraction__gallery{ grid-template-columns:1fr; }
   .attraction__split{ grid-template-columns:1fr; }
