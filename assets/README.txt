@@ -44,10 +44,11 @@ assets/img/penedo-serra-2.jpg   - pousada/jardim com lago
 
 VIDEO (pagina 3)
 ----------------
-Em vez de arquivo de video local, a secao usa um embed do YouTube
-(iframe apontando para youtube-nocookie.com/embed/<ID>). O video atual
-e o Short enviado pelo cliente via Asana. Para trocar o video no futuro,
-basta editar o "src" do iframe em index.html (secao "PAGINA 3 - VIDEO").
+Em vez de arquivo de video local, a secao usa um embed do Vimeo
+(iframe apontando para player.vimeo.com/video/<ID>). O video atual foi
+enviado pelo cliente via Asana. Para trocar o video no futuro, basta
+editar o "src" do iframe em index.html (secao "PAGINA 3 - VIDEO") com o
+ID do novo video do Vimeo.
 
 FAQ
 ---
