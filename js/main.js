@@ -348,21 +348,36 @@
   if ('IntersectionObserver' in window) {
     revealEls.forEach(function(el){
       var delay = el.getAttribute('data-reveal-delay');
-      if (delay) el.style.setProperty('--d', delay);
+      el.dataset.baseDelay = delay || '0';
     });
     var io = new IntersectionObserver(function(entries){
+      // Fase 1: para TODOS os elementos deste disparo de uma vez, desliga a
+      // transição e aplica a direção/posição "escondida" correta. Fazer isto
+      // em lote (em vez de um a um) evita engasgos quando vários elementos
+      // entram juntos (ex.: título + fotos de uma secção).
       entries.forEach(function(entry){
         var el = entry.target;
         if (entry.isIntersecting) {
-          el.classList.add('reveal--notransition'); // desliga a transição para trocar a direção sem animar
+          el.classList.add('reveal--notransition');
           el.classList.toggle('reveal--reverse', scrollDirection === 'up');
-          void el.offsetWidth; // aplica a nova posição "escondida" instantaneamente
-          el.classList.remove('reveal--notransition'); // liga a transição de novo
-          void el.offsetWidth;
-          el.classList.add('is-visible');
+          // ao subir a página, o efeito cascata (1º, 2º, 3º...) deixa de
+          // fazer sentido, porque a ordem de entrada na tela se inverte —
+          // o elemento com maior atraso passaria a ser o primeiro a aparecer.
+          // Por isso, ao subir, todos entram juntos (sem atraso extra).
+          el.style.setProperty('--d', scrollDirection === 'up' ? 0 : el.dataset.baseDelay);
         } else {
           el.classList.remove('is-visible');
         }
+      });
+      void document.body.offsetWidth; // um único reflow para todo o lote
+
+      // Fase 2: liga a transição de novo e revela, também em lote.
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) entry.target.classList.remove('reveal--notransition');
+      });
+      void document.body.offsetWidth;
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
       });
     }, { threshold: 0.15, rootMargin: '-40px 0px -40px 0px' });
     revealEls.forEach(function(el){ io.observe(el); });

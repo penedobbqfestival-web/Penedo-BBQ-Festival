@@ -329,11 +329,11 @@ h1,h2,h3{ margin:0; font-weight:400; }
   position:relative; z-index:4;
   display:flex; align-items:center; justify-content:center;
   gap:24px;
-  padding-top:28px;
-  margin-bottom:clamp(24px, 7vh, 72px);
+  padding-top:20px;
+  margin-bottom:clamp(36px, 10vh, 108px);
 }
 .hero__logo-slot{
-  width:min(440px, 70vw); /* logo real é larga e baixa (~4.1:1) */
+  width:min(320px, 52vw); /* logo real é larga e baixa (~4.1:1) */
   aspect-ratio:1653/400;
   background-size:contain;
   background-repeat:no-repeat;
@@ -1121,7 +1121,7 @@ h1,h2,h3{ margin:0; font-weight:400; }
   .about__grid, .destination__grid, .story__grid, .openbar__inner{ grid-template-columns:1fr; }
   .destination__media{ order:-1; }
   .allin__grid{ grid-template-columns:1fr; }
-  .hero__logo-slot{ width:min(300px, 78vw); }
+  .hero__logo-slot{ width:min(220px, 62vw); }
   .destination__gallery{ grid-template-columns:repeat(2,1fr); }
   .attraction__gallery{ grid-template-columns:1fr; }
   .attraction__split{ grid-template-columns:1fr; }
