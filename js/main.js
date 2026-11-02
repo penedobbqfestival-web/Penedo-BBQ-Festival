@@ -238,6 +238,80 @@
   }
   buildSponsors('sponsorsTrack', sponsors);
 
+  // Permite arrastar com o mouse (desktop) ou deslizar com o dedo (celular)
+  // para navegar pelos carrosséis manualmente. Ao soltar, o carrossel volta
+  // a andar sozinho a partir de onde a pessoa parou.
+  function makeMarqueeDraggable(trackId){
+    var track = document.getElementById(trackId);
+    if (!track) return;
+    var wrap = track.closest('.marquee');
+    if (!wrap) return;
+    wrap.classList.add('marquee--draggable');
+
+    var isDown = false;
+    var pointerId = null;
+    var startX = 0;
+    var baseX = 0;
+    var moved = false;
+
+    function getTranslateX(){
+      var st = getComputedStyle(track).transform;
+      if (st === 'none') return 0;
+      var parts = st.match(/matrix\(([^)]+)\)/);
+      if (!parts) return 0;
+      var vals = parts[1].split(',');
+      return parseFloat(vals[4]) || 0;
+    }
+
+    function onPointerDown(e){
+      isDown = true;
+      moved = false;
+      pointerId = e.pointerId;
+      track.setPointerCapture(pointerId);
+      startX = e.clientX;
+      baseX = getTranslateX();
+      track.classList.add('is-dragging');
+      wrap.classList.add('is-dragging');
+    }
+    function onPointerMove(e){
+      if (!isDown) return;
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > 3) moved = true;
+      track.style.transform = 'translateX(' + (baseX + dx) + 'px)';
+    }
+    function onPointerUp(e){
+      if (!isDown) return;
+      isDown = false;
+      track.classList.remove('is-dragging');
+      wrap.classList.remove('is-dragging');
+      try { track.releasePointerCapture(pointerId); } catch(err){}
+
+      var halfWidth = track.scrollWidth / 2;
+      if (!halfWidth) { track.style.transform = ''; return; }
+      var finalX = getTranslateX();
+      var normalized = finalX % halfWidth;
+      if (normalized > 0) normalized -= halfWidth;
+      var progress = Math.min(Math.max(-normalized / halfWidth, 0), 1);
+
+      var cs = getComputedStyle(track);
+      var duration = parseFloat(cs.animationDuration) || 40;
+      var isReverse = cs.animationDirection === 'reverse';
+      var elapsed = isReverse ? (1 - progress) * duration : progress * duration;
+
+      track.style.transform = '';
+      track.style.animationDelay = (-elapsed) + 's';
+    }
+
+    track.addEventListener('pointerdown', onPointerDown);
+    track.addEventListener('pointermove', onPointerMove);
+    track.addEventListener('pointerup', onPointerUp);
+    track.addEventListener('pointercancel', onPointerUp);
+
+    // evita que o navegador tente arrastar as imagens individualmente
+    track.addEventListener('dragstart', function(e){ e.preventDefault(); });
+  }
+  ['marqueeTrack1', 'marqueeTrack2', 'sponsorsTrack', 'testimonialsTrack'].forEach(makeMarqueeDraggable);
+
   // Faixa vermelha divisória, com texto girando sem parar
   var tickerItems = ['04 SET 2027', 'Penedo BBQ Festival', '2ª Edição', 'Viva seu momento'];
   function buildTicker(trackId, items){
@@ -290,7 +364,7 @@
           el.classList.remove('is-visible');
         }
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.15, rootMargin: '-40px 0px -40px 0px' });
     revealEls.forEach(function(el){ io.observe(el); });
   } else {
     revealEls.forEach(function(el){ el.classList.add('is-visible'); });
