@@ -146,26 +146,12 @@ h1,h2,h3{ margin:0; font-weight:400; }
 
 /* ---------- paper grain texture (reusable) ---------- */
 .grain-overlay,
-.hero__grain, .countdown__grain, .presale__grain, .video-feature__grain{
+.countdown__grain, .presale__grain, .video-feature__grain{
   position:absolute; inset:0; pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
   opacity:.06;
   mix-blend-mode:multiply;
   z-index:2;
-}
-
-/* ---------- faíscas / brasa (canvas) ----------
-   Partículas reais de brasa subindo, não ícones desenhados.
-   Posicionadas estrategicamente nas secções escuras/quentes. */
-.ember-canvas{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  pointer-events:none;
-  z-index:2;
-  mix-blend-mode:screen;
-}
-@media (prefers-reduced-motion: reduce){
-  .ember-canvas{ display:none; }
 }
 
 /* ---------- textura de couro (usada na secção do contador) ---------- */
@@ -323,92 +309,16 @@ h1,h2,h3{ margin:0; font-weight:400; }
   background-blend-mode:normal;
   will-change:transform;
 }
-.hero__overlay{
-  position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(42,26,18,.6) 0%, rgba(42,26,18,.3) 32%, rgba(42,26,18,.8) 100%);
-  z-index:1;
-}
-.hero__top{
-  position:relative; z-index:4;
-  display:flex; align-items:center; justify-content:center;
-  gap:24px;
-  padding-top:20px;
-  margin-bottom:clamp(36px, 10vh, 108px);
-}
-.hero__logo-slot{
-  width:min(320px, 52vw); /* logo real é larga e baixa (~4.1:1) */
-  aspect-ratio:1653/400;
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
-  flex:0 0 auto;
-  filter:drop-shadow(0 6px 14px rgba(0,0,0,.45));
-}
-.hero__logo-slot .img-slot__label{ font-size:.62rem; padding:.3em; }
-.hero__logo-slot .img-slot__label small{ font-size:.55rem; }
 .hero__content{
   position:relative; z-index:3;
   text-align:center;
   width:100%;
-  align-self:center;
-  margin:auto auto;
-  padding:40px 24px;
-}
-.hero__title{
-  font-family:var(--font-impact);
-  text-transform:uppercase;
-  text-align:center;
-  font-size:clamp(2.6rem, 7.6vw, 5.2rem);
-  line-height:1.05;
-  margin:0 auto;
-  color:var(--creme);
-  position:relative;
-  z-index:4;
-  max-width:920px;
-}
-.hero__subtitle{
-  text-align:center;
-  font-size:clamp(1rem,2vw,1.25rem);
-  margin:.6em auto 0;
-  letter-spacing:.02em;
-  color:var(--creme);
-  opacity:.92;
-  position:relative;
-  z-index:3;
-}
-.hero__subtitle .script{
-  color:var(--dourada);
-  font-size:1.3em;
-}
-.hero__subtitle strong{
-  font-family:var(--font-impact);
-  text-transform:uppercase;
-  color:var(--dourada);
-  font-size:1em;
+  margin-top:auto;
+  padding:0 24px clamp(10px, 3vh, 30px);
 }
 .hero__content .btn{
   position:relative;
   z-index:5;
-  margin-top:1.3em;
-}
-
-.hero__scroll{
-  position:relative; z-index:4;
-  display:flex; flex-direction:column; align-items:center; gap:8px;
-  padding-bottom:26px;
-  color:var(--creme);
-  opacity:.75;
-}
-.hero__scroll span{
-  width:1px; height:34px;
-  background:linear-gradient(var(--dourada), transparent);
-  animation:scrollPulse 1.8s ease-in-out infinite;
-}
-.hero__scroll small{ font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; }
-@keyframes scrollPulse{
-  0%{ transform:scaleY(.4); opacity:.3; }
-  50%{ transform:scaleY(1); opacity:1; }
-  100%{ transform:scaleY(.4); opacity:.3; }
 }
 
 /* brand lockup (usado no footer e no mini-header) */
@@ -442,6 +352,13 @@ h1,h2,h3{ margin:0; font-weight:400; }
   padding:clamp(60px,8vw,100px) 0;
   text-align:center;
   overflow:hidden;
+  background-color:#4a3221; /* fallback enquanto a foto carrega */
+}
+.countdown__bg{
+  position:absolute; inset:0;
+  z-index:0;
+  background-size:cover;
+  background-position:center;
 }
 .countdown .container{
   position:relative;
@@ -679,23 +596,23 @@ h1,h2,h3{ margin:0; font-weight:400; }
   background-position:center;
 }
 
-/* Jimmy Ogro: fundo marrom solido, texto e fotos lado a lado */
+/* Jimmy Ogro: fundo marrom solido, foto grande, texto e fotos do churrasco embaixo */
 .attraction--brown{ background:var(--tabaco); padding:clamp(56px,8vw,90px) 0; }
-.attraction__split{
-  display:grid;
-  grid-template-columns:1.3fr .7fr;
-  gap:clamp(30px,5vw,60px);
-  align-items:center;
+.attraction__photo-lead{
+  width:min(560px, 88vw);
+  aspect-ratio:1200/1060;
+  margin:0 auto clamp(30px,5vw,46px);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 24px 44px -18px rgba(0,0,0,.5);
 }
-.attraction__split-text{ text-align:left; }
-.attraction__split-text .attraction__title{
-  text-align:left;
-  margin-left:0; margin-right:0;
-  font-size:clamp(1.6rem, 3.6vw, 2.5rem);
-  margin-bottom:.7em;
+.attraction__photo-lead.is-filled{
+  background-size:cover;
+  background-position:center;
 }
 .attraction__bio{
-  max-width:560px;
+  max-width:640px;
+  margin:0 auto;
   color:var(--creme);
   opacity:.92;
   font-size:.98rem;
@@ -709,9 +626,10 @@ h1,h2,h3{ margin:0; font-weight:400; }
   grid-template-columns:repeat(3,1fr);
   gap:22px;
 }
-.attraction__gallery--col{
-  grid-template-columns:1fr;
-  gap:14px;
+.attraction__gallery--two{
+  grid-template-columns:repeat(2,1fr);
+  max-width:600px;
+  margin:clamp(30px,5vw,46px) auto 0;
 }
 .attraction__photo--sm{
   width:100%;
@@ -719,7 +637,6 @@ h1,h2,h3{ margin:0; font-weight:400; }
   margin:0;
   border-radius:14px;
 }
-.attraction__gallery--col .attraction__photo--sm{ aspect-ratio:16/10; }
 
 /* =========================================================
    SOBRE / POR QUE NÃO PODE FICAR DE FORA (página 4)
@@ -1117,12 +1034,8 @@ h1,h2,h3{ margin:0; font-weight:400; }
   .about__grid, .destination__grid, .story__grid, .openbar__inner{ grid-template-columns:1fr; }
   .destination__media{ order:-1; }
   .allin__grid{ grid-template-columns:1fr; }
-  .hero__logo-slot{ width:min(220px, 62vw); }
   .destination__gallery{ grid-template-columns:repeat(2,1fr); }
   .attraction__gallery{ grid-template-columns:1fr; }
-  .attraction__split{ grid-template-columns:1fr; }
-  .attraction__split-text{ text-align:center; }
-  .attraction__split-text .attraction__title{ text-align:center; margin:0 auto .7em; }
   .attraction__bio{ max-width:none; margin:0 auto; }
 }
 @media (max-width: 560px){

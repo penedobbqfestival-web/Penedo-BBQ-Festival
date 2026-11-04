@@ -23,35 +23,21 @@
 </header>
 
 <!-- ======= PÁGINA 1 · CAPA (HERO) ======= -->
+<!-- A foto de capa já traz título, logo e data do evento embutidos na própria imagem -->
 <section class="hero" id="topo">
-  <!-- Espaço da foto de capa: já preenchido com assets/img/hero-bg.jpg (troque pelo ficheiro final na Hostinger) -->
   <div class="hero__bg" id="heroBg" data-img="assets/img/hero-bg.jpg"></div>
-  <div class="hero__overlay"></div>
-  <div class="hero__grain"></div>
-  <canvas class="ember-canvas" id="emberHero" aria-hidden="true"></canvas>
   <span class="img-tag" id="heroBgTag">📷 Foto de capa: assets/img/hero-bg.jpg</span>
 
-  <div class="hero__top container">
-    <!-- Espaço do logo: adicione assets/img/logo.png (fundo transparente) -->
-    <div class="hero__logo-slot img-slot reveal" data-reveal="fade-down" id="heroLogoSlot" data-img="assets/img/logo.png">
-      <span class="img-slot__label">🖼️ Logo<br><small>assets/img/logo.png</small></span>
-    </div>
-  </div>
-
   <div class="hero__content container">
-    <h1 class="hero__title reveal" data-reveal="fade-up" data-reveal-delay="1">O maior <span class="highlight-dourada">festival de churrasco</span> do Rio de Janeiro</h1>
-    <p class="hero__subtitle reveal" data-reveal="fade-up" data-reveal-delay="2"><span class="script">Viva seu melhor momento</span> em <strong>04 de setembro</strong> de <strong>2027</strong></p>
-    <a href="https://byma.com.br/penedobbqfestival" target="_blank" rel="noopener" class="btn btn--primary btn--lg reveal" data-reveal="fade-up" data-reveal-delay="3">Cadastro Pré-venda</a>
-  </div>
-
-  <div class="hero__scroll reveal" data-reveal="fade-up" data-reveal-delay="4">
-    <span></span>
-    <small>role para descobrir</small>
+    <a href="https://byma.com.br/penedobbqfestival" target="_blank" rel="noopener" class="btn btn--primary btn--lg reveal" data-reveal="fade-up">Cadastro Pré-venda</a>
   </div>
 </section>
 
 <!-- ======= PÁGINA 2 · CONTADOR ======= -->
-<section class="countdown leather-bg">
+<section class="countdown">
+  <div class="countdown__bg img-slot" id="countdownBg" data-img="assets/img/countdown-bg.jpg">
+    <span class="img-slot__label">📷 Fundo da contagem<br><small>assets/img/countdown-bg.jpg</small></span>
+  </div>
   <div class="countdown__grain"></div>
   <svg class="countdown__ox" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
     <path d="M300,150 C266,150 238,133 231,106 C170,92 70,78 10,15 C55,78 140,118 206,128
@@ -61,10 +47,9 @@
       M255,172 a14,14 0 1,0 0.1,0 Z M345,172 a14,14 0 1,0 0.1,0 Z
       M284,200 L316,200 L300,224 Z" fill="currentColor"/>
   </svg>
-  <canvas class="ember-canvas" id="emberCountdown" aria-hidden="true"></canvas>
   <div class="container">
     <h2 class="countdown__title reveal" data-reveal="fade-left">Faltam</h2>
-    <div class="countdown__grid reveal" data-reveal="fade-up" data-reveal-delay="1" id="countdown" data-date="2027-09-04T11:00:00-03:00">
+    <div class="countdown__grid reveal" data-reveal="fade-up" data-reveal-delay="1" id="countdown" data-date="2027-03-10T00:00:00-03:00">
       <div class="countdown__unit">
         <span class="countdown__number" data-unit="days">00</span>
         <span class="countdown__label">Dias</span>
@@ -82,7 +67,7 @@
         <span class="countdown__label">Seg</span>
       </div>
     </div>
-    <p class="countdown__sub reveal" data-reveal="fade-up" data-reveal-delay="2">para viver o inesquecível</p>
+    <p class="countdown__sub reveal" data-reveal="fade-up" data-reveal-delay="2">para a pré-venda</p>
   </div>
 </section>
 
@@ -126,24 +111,22 @@
 
 <!-- ======= ATRAÇÃO: JIMMY OGRO ======= -->
 <section class="attraction attraction--brown">
-  <div class="container attraction__split">
-    <div class="attraction__split-text">
-      <h2 class="attraction__title attraction__title--light reveal" data-reveal="fade-right">Do Texas para o Brasil. Do fogo para o Penedo BBQ.</h2>
-      <div class="attraction__bio reveal" data-reveal="fade-right" data-reveal-delay="1">
-        <p>Nascido em Houston, Texas, Jimmy Ogro carrega desde a infância a cultura americana da brasa, do barbecue e das grandes carnes. Filho de pai americano e mãe brasileira, transformou essa mistura de culturas em uma assinatura gastronômica única.</p>
-        <p>Há mais de 12 anos no Mais Você, da TV Globo, Jimmy se tornou uma das figuras mais conhecidas da gastronomia brasileira e presença constante nos grandes eventos de fogo e brasa do país. Hoje, é reconhecido também como embaixador da carne suína no Brasil.</p>
-        <p>E agora, toda essa experiência texana encontra a paixão brasileira pelo churrasco no Penedo BBQ Festival.</p>
-      </div>
+  <div class="container attraction__inner">
+    <div class="attraction__photo-lead img-slot photo-hover reveal" data-reveal="zoom" data-img="assets/img/jimmy-ogro-01.jpg">
+      <span class="img-slot__label">📷 Jimmy Ogro<br><small>jimmy-ogro-01.jpg</small></span>
     </div>
-    <div class="attraction__gallery attraction__gallery--col">
-      <!-- Espaço das 3 fotos do Jimmy Ogro -->
-      <div class="attraction__photo attraction__photo--sm img-slot photo-hover reveal" data-reveal="fade-left" data-reveal-delay="1" data-img="assets/img/jimmy-ogro-01.jpg">
-        <span class="img-slot__label">📷<br><small>jimmy-ogro-01.jpg</small></span>
-      </div>
-      <div class="attraction__photo attraction__photo--sm img-slot photo-hover reveal" data-reveal="fade-left" data-reveal-delay="2" data-img="assets/img/jimmy-ogro-02.jpg">
+    <h2 class="attraction__title attraction__title--light reveal" data-reveal="fade-right">Do Texas para o Brasil. Do fogo para o Penedo BBQ.</h2>
+    <div class="attraction__bio reveal" data-reveal="fade-right" data-reveal-delay="1">
+      <p>Nascido em Houston, Texas, Jimmy Ogro carrega desde a infância a cultura americana da brasa, do barbecue e das grandes carnes. Filho de pai americano e mãe brasileira, transformou essa mistura de culturas em uma assinatura gastronômica única.</p>
+      <p>Há mais de 12 anos no Mais Você, da TV Globo, Jimmy se tornou uma das figuras mais conhecidas da gastronomia brasileira e presença constante nos grandes eventos de fogo e brasa do país. Hoje, é reconhecido também como embaixador da carne suína no Brasil.</p>
+      <p>E agora, toda essa experiência texana encontra a paixão brasileira pelo churrasco no Penedo BBQ Festival.</p>
+    </div>
+    <div class="attraction__gallery attraction__gallery--two">
+      <!-- Fotos do churrasco/grelha -->
+      <div class="attraction__photo attraction__photo--sm img-slot photo-hover reveal" data-reveal="fade-left" data-reveal-delay="1" data-img="assets/img/jimmy-ogro-02.jpg">
         <span class="img-slot__label">📷<br><small>jimmy-ogro-02.jpg</small></span>
       </div>
-      <div class="attraction__photo attraction__photo--sm img-slot photo-hover reveal" data-reveal="fade-left" data-reveal-delay="3" data-img="assets/img/jimmy-ogro-03.jpg">
+      <div class="attraction__photo attraction__photo--sm img-slot photo-hover reveal" data-reveal="fade-left" data-reveal-delay="2" data-img="assets/img/jimmy-ogro-03.jpg">
         <span class="img-slot__label">📷<br><small>jimmy-ogro-03.jpg</small></span>
       </div>
     </div>
@@ -218,7 +201,7 @@
           <span class="img-slot__label">📷<br><small>allin-01.jpg</small></span>
         </div>
         <h3>Cortes Premium</h3>
-        <p>Picanha Black Angus, Tomahawk, Chorizo, T-Bone e muito mais, preparados pelos chefes mais renomados.</p>
+        <p>Cortes de carnes premium, peixes e muito mais, preparados pelos chefes assadores mais renomados.</p>
       </div>
       <div class="allin__card reveal" data-reveal="zoom" data-reveal-delay="2">
         <div class="allin__photo img-slot photo-hover" data-img="assets/img/allin-02.jpg">
@@ -368,7 +351,6 @@
 <!-- ======= PÁGINA 8 · CTA FINAL / PRÉ-VENDA ======= -->
 <section class="presale" id="presale">
   <div class="presale__grain"></div>
-  <canvas class="ember-canvas" id="emberPresale" aria-hidden="true"></canvas>
   <div class="container presale__inner">
     <p class="eyebrow eyebrow--light reveal" data-reveal="fade-up">Garanta seu lugar</p>
     <h2 class="presale__title reveal" data-reveal="fade-left" data-reveal-delay="1">

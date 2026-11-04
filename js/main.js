@@ -192,14 +192,16 @@
   buildTestimonials('testimonialsTrack', testimonialShots);
 
   // Logos dos patrocinadores: coloque os PNGs (fundo transparente) em
-  // assets/img/sponsors/ com estes nomes de ficheiro.
+  // assets/img/sponsors/ com estes nomes de ficheiro. Preencha "url" com o
+  // site de cada patrocinador para o logo virar um link clicável (deixe
+  // null para não linkar).
   var sponsors = [
-    { name: 'Brahma',           file: 'brahma.png' },
-    { name: 'Maturatta Friboi', file: 'maturatta.png' },
-    { name: 'RAM',              file: 'ram.png' },
-    { name: 'Parrillas Penedo', file: 'parrillas.png' },
-    { name: 'Coca-Cola',        file: 'coca-cola.png' },
-    { name: 'Byma',             file: 'byma.png' }
+    { name: 'Brahma',           file: 'brahma.png',     url: null },
+    { name: 'Maturatta Friboi', file: 'maturatta.png',  url: null },
+    { name: 'RAM',              file: 'ram.png',        url: null },
+    { name: 'Parrillas Penedo', file: 'parrillas.png',  url: null },
+    { name: 'Coca-Cola',        file: 'coca-cola.png',  url: null },
+    { name: 'Byma',             file: 'byma.png',       url: null }
   ];
   function buildSponsors(trackId, list){
     var track = document.getElementById(trackId);
@@ -207,8 +209,14 @@
     var fragment = document.createDocumentFragment();
     [list, list].forEach(function(set){
       set.forEach(function(sponsor){
-        var div = document.createElement('div');
+        var div = document.createElement(sponsor.url ? 'a' : 'div');
         div.className = 'sponsor-logo is-filled';
+        if (sponsor.url) {
+          div.href = sponsor.url;
+          div.target = '_blank';
+          div.rel = 'noopener';
+          div.setAttribute('aria-label', sponsor.name);
+        }
         var src = 'assets/img/sponsors/' + sponsor.file;
         div.style.backgroundImage = "url('" + src + "')";
 
@@ -364,82 +372,5 @@
       }
     }, { passive: true });
   }
-
-  /* ---------- 6. Faíscas / brasa (canvas) ----------
-     Partículas reais de brasa subindo e piscando, para dar sensação de
-     fogo de verdade (não ícones desenhados). Desliga sozinho se o
-     visitante preferir menos animação (prefers-reduced-motion). */
-  function startEmbers(canvas, options){
-    if (!canvas) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var ctx = canvas.getContext('2d');
-    var opts = options || {};
-    var count = opts.count || 36;
-    var particles = [];
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-    function resize(){
-      canvas.width = canvas.offsetWidth * dpr;
-      canvas.height = canvas.offsetHeight * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    resize();
-    window.addEventListener('resize', resize, { passive: true });
-
-    function spawn(fromBottom){
-      var w = canvas.offsetWidth, h = canvas.offsetHeight;
-      return {
-        x: Math.random() * w,
-        y: fromBottom ? h + Math.random() * 30 : Math.random() * h,
-        r: Math.random() * 1.6 + 0.5,
-        speed: Math.random() * 0.5 + 0.25,
-        drift: (Math.random() - 0.5) * 0.5,
-        wobble: Math.random() * Math.PI * 2,
-        life: 0,
-        maxLife: Math.random() * 220 + 160
-      };
-    }
-    for (var i = 0; i < count; i++) particles.push(spawn(false));
-
-    function tick(){
-      var w = canvas.offsetWidth, h = canvas.offsetHeight;
-      ctx.clearRect(0, 0, w, h);
-      particles.forEach(function(p){
-        p.y -= p.speed;
-        p.wobble += 0.04;
-        p.x += p.drift + Math.sin(p.wobble) * 0.3;
-        p.life++;
-
-        var lifeRatio = p.life / p.maxLife;
-        if (lifeRatio >= 1 || p.y < -10) {
-          var fresh = spawn(true);
-          Object.assign(p, fresh);
-          return;
-        }
-        var alpha = Math.sin(lifeRatio * Math.PI);
-
-        var glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
-        glow.addColorStop(0, 'rgba(255,190,90,' + (alpha * 0.9) + ')');
-        glow.addColorStop(0.4, 'rgba(255,110,40,' + (alpha * 0.5) + ')');
-        glow.addColorStop(1, 'rgba(255,60,20,0)');
-        ctx.fillStyle = glow;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r * 5, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = 'rgba(255,224,160,' + alpha + ')';
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      canvas._emberRaf = requestAnimationFrame(tick);
-    }
-    tick();
-  }
-
-  startEmbers(document.getElementById('emberHero'), { count: 30 });
-  startEmbers(document.getElementById('emberCountdown'), { count: 44 });
-  startEmbers(document.getElementById('emberPresale'), { count: 22 });
 
 })();
