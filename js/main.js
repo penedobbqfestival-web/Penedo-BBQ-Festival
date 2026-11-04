@@ -196,12 +196,12 @@
   // site de cada patrocinador para o logo virar um link clicável (deixe
   // null para não linkar).
   var sponsors = [
-    { name: 'Brahma',           file: 'brahma.png',     url: null },
-    { name: 'Maturatta Friboi', file: 'maturatta.png',  url: null },
-    { name: 'RAM',              file: 'ram.png',        url: null },
-    { name: 'Parrillas Penedo', file: 'parrillas.png',  url: null },
-    { name: 'Coca-Cola',        file: 'coca-cola.png',  url: null },
-    { name: 'Byma',             file: 'byma.png',       url: null }
+    { name: 'Brahma',           file: 'brahma.png',     url: 'https://www.brahma.com.br/pt-br' },
+    { name: 'Maturatta Friboi', file: 'maturatta.png',  url: 'https://www.friboi.com.br/marcas/maturatta-friboi/' },
+    { name: 'RAM',              file: 'ram.png',        url: 'https://www.ram.com.br/' },
+    { name: 'Parrillas Penedo', file: 'parrillas.png',  url: 'https://parrillaspenedo.com.br/' },
+    { name: 'Coca-Cola',        file: 'coca-cola.png',  url: 'https://www.coca-cola.com/br/pt' },
+    { name: 'Byma',             file: 'byma.png',       url: 'https://byma.com.br/penedobbqfestival' }
   ];
   function buildSponsors(trackId, list){
     var track = document.getElementById(trackId);
@@ -354,23 +354,6 @@
     revealEls.forEach(function(el){ io.observe(el); });
   } else {
     revealEls.forEach(function(el){ el.classList.add('is-visible'); });
-  }
-
-  /* ---------- 5. Parallax leve no hero ---------- */
-  if (heroBg) {
-    var ticking = false;
-    window.addEventListener('scroll', function(){
-      if (!ticking) {
-        window.requestAnimationFrame(function(){
-          var y = window.scrollY;
-          if (y < window.innerHeight * 1.2) {
-            heroBg.style.transform = 'translate3d(0,' + (y * 0.25) + 'px,0) scale(1.08)';
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
   }
 
 })();

@@ -289,10 +289,10 @@ h1,h2,h3{ margin:0; font-weight:400; }
    ========================================================= */
 .hero{
   position:relative;
-  min-height:100svh;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  width:100%;
+  /* mesma proporção da foto (2400x1600) — assim ela cabe inteira, sem
+     cortar nada e sem sobrar espaço vazio, em qualquer tamanho de tela */
+  aspect-ratio:3/2;
   overflow:hidden;
   background:var(--tabaco);
   color:var(--creme);
@@ -307,19 +307,13 @@ h1,h2,h3{ margin:0; font-weight:400; }
     linear-gradient(180deg, rgba(42,26,18,.35), rgba(42,26,18,.85)),
     radial-gradient(circle at 30% 20%, #7c5a35 0%, #3a2717 55%, #2a1a12 100%);
   background-blend-mode:normal;
-  will-change:transform;
 }
 .hero__content{
-  position:relative; z-index:3;
-  text-align:center;
-  width:100%;
-  margin-top:auto;
-  padding:0 24px clamp(10px, 3vh, 30px);
+  position:absolute;
+  top:1.2%; right:2%;
+  z-index:3;
 }
-.hero__content .btn{
-  position:relative;
-  z-index:5;
-}
+.hero__cta-short{ display:none; }
 
 /* brand lockup (usado no footer e no mini-header) */
 .brand-lockup{
@@ -1044,6 +1038,12 @@ h1,h2,h3{ margin:0; font-weight:400; }
   .faq__item{ padding:16px 18px; }
   .faq__item summary{ font-size:.82rem; padding-right:28px; }
   .faq__item p{ font-size:.88rem; }
+  /* no celular a foto fica bem mais baixa (mesma proporção, tela estreita),
+     então o botão precisa ser pequeno e com texto curto para não tampar
+     o título que já vem desenhado na própria imagem */
+  .hero__content .btn{ font-size:.5rem; padding:.4em .85em; letter-spacing:.03em; }
+  .hero__cta-full{ display:none; }
+  .hero__cta-short{ display:inline; }
 }
 
 /* reduced motion */
