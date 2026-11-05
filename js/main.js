@@ -271,21 +271,28 @@
       isDown = true;
       moved = false;
       pointerId = e.pointerId;
-      track.setPointerCapture(pointerId);
       startX = e.clientX;
       baseX = getTranslateX();
-      track.classList.add('is-dragging');
-      wrap.classList.add('is-dragging');
+      // não captura o ponteiro nem mexe em nada ainda — só se o gesto
+      // virar um arraste de verdade. Assim um simples clique/toque num
+      // link (ex.: logo de patrocinador) continua funcionando normalmente.
     }
     function onPointerMove(e){
       if (!isDown) return;
       var dx = e.clientX - startX;
-      if (Math.abs(dx) > 3) moved = true;
+      if (!moved && Math.abs(dx) > 3) {
+        moved = true;
+        track.setPointerCapture(pointerId);
+        track.classList.add('is-dragging');
+        wrap.classList.add('is-dragging');
+      }
+      if (!moved) return;
       track.style.transform = 'translateX(' + (baseX + dx) + 'px)';
     }
     function onPointerUp(e){
       if (!isDown) return;
       isDown = false;
+      if (!moved) return; // foi só um clique — deixa o navegador seguir o link normalmente
       track.classList.remove('is-dragging');
       wrap.classList.remove('is-dragging');
       try { track.releasePointerCapture(pointerId); } catch(err){}
@@ -313,6 +320,12 @@
 
     // evita que o navegador tente arrastar as imagens individualmente
     track.addEventListener('dragstart', function(e){ e.preventDefault(); });
+
+    // se o gesto foi um arraste de verdade, não deixa o clique "solto" em
+    // cima de um link (ex.: logo de patrocinador) abrir o site por engano
+    track.addEventListener('click', function(e){
+      if (moved) { e.preventDefault(); e.stopPropagation(); }
+    });
   }
   ['marqueeTrack1', 'marqueeTrack2', 'sponsorsTrack', 'testimonialsTrack'].forEach(makeMarqueeDraggable);
 
