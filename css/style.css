@@ -155,33 +155,38 @@ h1,h2,h3{ margin:0; font-weight:400; }
 }
 
 /* ---------- textura de couro (usada em todas as secções marrom) ----------
+   Foto real do couro (a mesma da contagem regressiva, sem o boi). A costura
+   dourada fica nas duas bordas (esquerda e direita) da foto — por isso o
+   tamanho é travado em 100% da largura (nunca corta os lados) e repete na
+   vertical, assim a costura some aparece inteira tanto no celular quanto
+   no computador, e continua sem interrupção ao longo de toda a largura.
    !important porque esta textura precisa aparecer por cima do background
    sólido de outras classes utilitárias (.section--dark, .attraction--brown,
    .footer) quando combinadas na mesma secção. */
 .leather-bg{
   background-color:#4a3221 !important;
-  background-image:
-    radial-gradient(ellipse at 18% 22%, rgba(104,72,44,.55), transparent 55%),
-    radial-gradient(ellipse at 78% 68%, rgba(58,37,21,.65), transparent 55%),
-    radial-gradient(ellipse at 50% 105%, rgba(15,9,5,.55), transparent 60%),
-    repeating-linear-gradient(135deg, rgba(0,0,0,.07) 0px, rgba(0,0,0,.07) 2px, transparent 2px, transparent 7px),
-    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0px, rgba(255,255,255,.02) 1px, transparent 1px, transparent 5px),
-    linear-gradient(180deg, #4a3221, #2a1a12) !important;
+  background-image:url('../assets/img/countdown-bg.jpg') !important;
+  background-size:100% auto !important;
+  background-position:top center !important;
+  background-repeat:repeat-y !important;
   box-shadow:inset 0 0 140px rgba(0,0,0,.55);
 }
-/* textura reforçada de couro + pano, para secções maiores/mais importantes */
+/* secções maiores/mais importantes: um pouco mais escurecidas por cima */
 .leather-bg--strong{
-  background-image:
-    radial-gradient(ellipse at 15% 20%, rgba(120,84,50,.6), transparent 50%),
-    radial-gradient(ellipse at 82% 72%, rgba(50,32,18,.7), transparent 50%),
-    radial-gradient(ellipse at 50% 108%, rgba(10,6,3,.6), transparent 60%),
-    repeating-linear-gradient(135deg, rgba(0,0,0,.1) 0px, rgba(0,0,0,.1) 2px, transparent 2px, transparent 6px),
-    repeating-linear-gradient(45deg, rgba(0,0,0,.1) 0px, rgba(0,0,0,.1) 2px, transparent 2px, transparent 6px),
-    repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0px, rgba(255,255,255,.025) 1px, transparent 1px, transparent 4px),
-    repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0px, rgba(255,255,255,.025) 1px, transparent 1px, transparent 4px),
-    linear-gradient(180deg, #4a3221, #241509) !important;
-  box-shadow:inset 0 0 180px rgba(0,0,0,.65);
+  box-shadow:inset 0 0 180px rgba(0,0,0,.68);
 }
+.leather-bg--strong::before{
+  content:"";
+  position:absolute; inset:0;
+  background:rgba(20,10,5,.22);
+  pointer-events:none;
+}
+/* quando várias secções marrom ficam uma embaixo da outra, o fundo de
+   couro é um só (aplicado neste agrupador), continuando sem emenda entre
+   elas — as secções filhas não têm leather-bg, só o agrupador tem, então
+   o fundo sólido de cada secção precisa ficar transparente */
+.leather-group{ position:relative; }
+.leather-group > section{ background:transparent; }
 
 /* ---------- buttons ---------- */
 .btn{
@@ -1025,6 +1030,7 @@ h1,h2,h3{ margin:0; font-weight:400; }
    FOOTER
    ========================================================= */
 .footer{
+  position:relative;
   background:var(--tabaco);
   color:var(--creme);
   padding:60px 0 36px;
