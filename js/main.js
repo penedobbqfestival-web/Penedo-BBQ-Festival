@@ -34,6 +34,7 @@
   });
 
   var heroBg = document.getElementById('heroBg');
+  var heroBgMobile = document.getElementById('heroBgMobile');
   var heroBgTag = document.getElementById('heroBgTag');
   if (heroBg) {
     fillImageSlot(heroBg);
@@ -41,6 +42,9 @@
     var heroSrcCheck = new Image();
     heroSrcCheck.onerror = function(){ if (heroBgTag) heroBgTag.classList.remove('is-hidden'); };
     heroSrcCheck.src = heroBg.getAttribute('data-img');
+  }
+  if (heroBgMobile) {
+    fillImageSlot(heroBgMobile);
   }
 
   // Secção "Munhoz e Mariano" usa a mesma foto de capa como fundo

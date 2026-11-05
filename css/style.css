@@ -290,8 +290,8 @@ h1,h2,h3{ margin:0; font-weight:400; }
 .hero{
   position:relative;
   width:100%;
-  /* mesma proporção da foto (2400x1600) — assim ela cabe inteira, sem
-     cortar nada e sem sobrar espaço vazio, em qualquer tamanho de tela */
+  /* mesma proporção da foto de desktop (2400x1600) — assim ela cabe
+     inteira, sem cortar nada e sem sobrar espaço vazio */
   aspect-ratio:3/2;
   overflow:hidden;
   background:var(--tabaco);
@@ -307,6 +307,14 @@ h1,h2,h3{ margin:0; font-weight:400; }
     linear-gradient(180deg, rgba(42,26,18,.35), rgba(42,26,18,.85)),
     radial-gradient(circle at 30% 20%, #7c5a35 0%, #3a2717 55%, #2a1a12 100%);
   background-blend-mode:normal;
+}
+.hero__bg--mobile{ display:none; }
+/* no celular troca para a foto vertical (9:16), feita sob medida para
+   caber inteira numa tela alta e estreita */
+@media (max-width:680px){
+  .hero{ aspect-ratio:9/16; }
+  .hero__bg--desktop{ display:none; }
+  .hero__bg--mobile{ display:block; }
 }
 .hero__content{
   position:absolute;

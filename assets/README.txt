@@ -8,7 +8,9 @@ precisa mexer em codigo.
 
 JA PREENCHIDO
 -------------
-assets/img/hero-bg.jpg          - foto de capa (tambem usada na secao Munhoz e Mariano)
+assets/img/hero-bg.jpg          - foto de capa (desktop/tablet, paisagem 3:2)
+assets/img/hero-bg-mobile.jpg   - foto de capa (celular, retrato 9:16)
+assets/img/countdown-bg.jpg     - foto de fundo da contagem regressiva (couro)
 assets/img/logo.png             - logo oficial (usada na capa, cabecalho fixo e rodape)
 assets/img/logo-selo.png        - variante selo/carimbo do logo, nao usada ainda
 assets/img/openbar.jpg          - "E se o copo nunca esvaziasse?"
