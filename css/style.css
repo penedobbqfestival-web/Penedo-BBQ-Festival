@@ -171,6 +171,28 @@ h1,h2,h3{ margin:0; font-weight:400; }
   background-repeat:repeat-y !important;
   box-shadow:inset 0 0 140px rgba(0,0,0,.55);
 }
+/* variantes de cor — mesmo esquema (100% largura, repete na vertical,
+   costura das bordas sempre visível), trocando só a foto/tom */
+.leather-bg--creme{
+  background-color:#d9c49c !important;
+  background-image:url('../assets/img/leather-creme.jpg') !important;
+  box-shadow:inset 0 0 100px rgba(70,45,15,.18);
+}
+.leather-bg--amarelo{
+  background-color:#b97a37 !important;
+  background-image:url('../assets/img/leather-caramelo.jpg') !important;
+  box-shadow:inset 0 0 120px rgba(50,25,8,.3);
+}
+.leather-bg--vermelho{
+  background-color:#5c2024 !important;
+  background-image:url('../assets/img/leather-borgonha.jpg') !important;
+  box-shadow:inset 0 0 150px rgba(0,0,0,.5);
+}
+.leather-bg--azul{
+  background-color:#3d6181 !important;
+  background-image:url('../assets/img/leather-azul.jpg') !important;
+  box-shadow:inset 0 0 140px rgba(0,0,0,.4);
+}
 /* secções maiores/mais importantes: um pouco mais escurecidas por cima */
 .leather-bg--strong{
   box-shadow:inset 0 0 180px rgba(0,0,0,.68);
@@ -509,8 +531,26 @@ h1,h2,h3{ margin:0; font-weight:400; }
   to{ transform:translateX(-50%); }
 }
 
+/* faixa de couro com costura em cima e embaixo, encaixada só atrás das
+   fotos/logos que passam (não atrás dos títulos) — a margem (padding)
+   garante que a costura sempre apareça livre, sem a imagem por cima */
+.marquee-band{
+  position:relative;
+  margin:28px 0;
+}
+.marquee-band::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image:url('../assets/img/leather-band.jpg');
+  background-size:100% 100%;
+  z-index:0;
+}
+.marquee-band > .marquee{ position:relative; z-index:1; }
+.marquee-band--sponsors{ padding:30px 0; }
+.marquee-band--testimonials{ padding:34px 0; }
+
 /* patrocinadores: logos reais (com slot tracejado até o PNG ser enviado) */
-.marquee--sponsors{ background:transparent; padding:34px 0 14px; }
+.marquee--sponsors{ background:transparent; }
 .marquee--sponsors .marquee__track{ animation-duration:32s; align-items:center; }
 .sponsor-logo{
   flex:0 0 auto;
