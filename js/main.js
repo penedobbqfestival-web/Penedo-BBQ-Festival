@@ -245,6 +245,7 @@
   // Permite arrastar com o mouse (desktop) ou deslizar com o dedo (celular)
   // para navegar pelos carrosséis manualmente. Ao soltar, o carrossel volta
   // a andar sozinho a partir de onde a pessoa parou.
+  var draggableTracks = [];
   function makeMarqueeDraggable(trackId){
     var track = document.getElementById(trackId);
     if (!track) return;
@@ -267,13 +268,25 @@
       return parseFloat(vals[4]) || 0;
     }
 
+    // Controla pausar/retomar o movimento automático diretamente por JS
+    // (em vez de depender só do :hover do CSS). O :hover pode "ficar preso"
+    // depois de um clique que navega pra outra página e a pessoa volta
+    // (ou num toque no celular), deixando o carrossel parado pra sempre.
+    function resume(){
+      track.style.animationPlayState = 'running';
+    }
+    function pause(){
+      track.style.animationPlayState = 'paused';
+    }
+
     function onPointerDown(e){
       isDown = true;
       moved = false;
       pointerId = e.pointerId;
       startX = e.clientX;
       baseX = getTranslateX();
-      // não captura o ponteiro nem mexe em nada ainda — só se o gesto
+      pause();
+      // não captura o ponteiro nem mexe em mais nada ainda — só se o gesto
       // virar um arraste de verdade. Assim um simples clique/toque num
       // link (ex.: logo de patrocinador) continua funcionando normalmente.
     }
@@ -292,13 +305,13 @@
     function onPointerUp(e){
       if (!isDown) return;
       isDown = false;
-      if (!moved) return; // foi só um clique — deixa o navegador seguir o link normalmente
+      if (!moved) { resume(); return; } // foi só um clique — retoma e deixa o navegador seguir o link
       track.classList.remove('is-dragging');
       wrap.classList.remove('is-dragging');
       try { track.releasePointerCapture(pointerId); } catch(err){}
 
       var halfWidth = track.scrollWidth / 2;
-      if (!halfWidth) { track.style.transform = ''; return; }
+      if (!halfWidth) { track.style.transform = ''; resume(); return; }
       var finalX = getTranslateX();
       var normalized = finalX % halfWidth;
       if (normalized > 0) normalized -= halfWidth;
@@ -311,15 +324,27 @@
 
       track.style.transform = '';
       track.style.animationDelay = (-elapsed) + 's';
+      resume();
     }
 
     track.addEventListener('pointerdown', onPointerDown);
     track.addEventListener('pointermove', onPointerMove);
     track.addEventListener('pointerup', onPointerUp);
-    track.addEventListener('pointercancel', onPointerUp);
+    track.addEventListener('pointercancel', function(e){ onPointerUp(e); resume(); });
+
+    // pausa ao passar o mouse por cima (só no computador; no touch quem
+    // manda é o pointerdown/up acima) e retoma ao tirar o mouse de cima —
+    // mantido todo em JS pra não depender do :hover do CSS, que pode
+    // "ficar preso" depois de um toque no celular.
+    track.addEventListener('mouseenter', pause);
+    track.addEventListener('mouseleave', function(){ if (!isDown) resume(); });
 
     // evita que o navegador tente arrastar as imagens individualmente
     track.addEventListener('dragstart', function(e){ e.preventDefault(); });
+
+    // essa lista guarda todas as faixas pra poder "destravar" de uma vez
+    // (ver pageshow mais abaixo)
+    draggableTracks.push(track);
 
     // se o gesto foi um arraste de verdade, não deixa o clique "solto" em
     // cima de um link (ex.: logo de patrocinador) abrir o site por engano
@@ -328,6 +353,14 @@
     });
   }
   ['marqueeTrack1', 'marqueeTrack2', 'sponsorsTrack', 'testimonialsTrack'].forEach(makeMarqueeDraggable);
+
+  // Quando a pessoa clica numa logo/foto, vai pro site e depois aperta
+  // "voltar", o navegador às vezes restaura a página exatamente como ficou
+  // (com o carrossel pausado) sem disparar mouseleave. O evento "pageshow"
+  // cobre esse caso e garante que tudo volte a andar sozinho.
+  window.addEventListener('pageshow', function(){
+    draggableTracks.forEach(function(t){ t.style.animationPlayState = 'running'; });
+  });
 
   // Faixa vermelha divisória, com texto girando sem parar
   var tickerItems = ['04 SET 2027', 'Penedo BBQ Festival', '2ª Edição', 'Viva seu momento'];

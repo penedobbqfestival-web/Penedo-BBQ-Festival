@@ -154,19 +154,22 @@ h1,h2,h3{ margin:0; font-weight:400; }
   z-index:2;
 }
 
-/* ---------- textura de couro (usada na secção do contador) ---------- */
+/* ---------- textura de couro (usada em todas as secções marrom) ----------
+   !important porque esta textura precisa aparecer por cima do background
+   sólido de outras classes utilitárias (.section--dark, .attraction--brown,
+   .footer) quando combinadas na mesma secção. */
 .leather-bg{
-  background-color:#4a3221;
+  background-color:#4a3221 !important;
   background-image:
     radial-gradient(ellipse at 18% 22%, rgba(104,72,44,.55), transparent 55%),
     radial-gradient(ellipse at 78% 68%, rgba(58,37,21,.65), transparent 55%),
     radial-gradient(ellipse at 50% 105%, rgba(15,9,5,.55), transparent 60%),
     repeating-linear-gradient(135deg, rgba(0,0,0,.07) 0px, rgba(0,0,0,.07) 2px, transparent 2px, transparent 7px),
     repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0px, rgba(255,255,255,.02) 1px, transparent 1px, transparent 5px),
-    linear-gradient(180deg, #4a3221, #2a1a12);
+    linear-gradient(180deg, #4a3221, #2a1a12) !important;
   box-shadow:inset 0 0 140px rgba(0,0,0,.55);
 }
-/* textura reforçada de couro + pano, para a secção de depoimentos */
+/* textura reforçada de couro + pano, para secções maiores/mais importantes */
 .leather-bg--strong{
   background-image:
     radial-gradient(ellipse at 15% 20%, rgba(120,84,50,.6), transparent 50%),
@@ -176,7 +179,7 @@ h1,h2,h3{ margin:0; font-weight:400; }
     repeating-linear-gradient(45deg, rgba(0,0,0,.1) 0px, rgba(0,0,0,.1) 2px, transparent 2px, transparent 6px),
     repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0px, rgba(255,255,255,.025) 1px, transparent 1px, transparent 4px),
     repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0px, rgba(255,255,255,.025) 1px, transparent 1px, transparent 4px),
-    linear-gradient(180deg, #4a3221, #241509);
+    linear-gradient(180deg, #4a3221, #241509) !important;
   box-shadow:inset 0 0 180px rgba(0,0,0,.65);
 }
 
@@ -473,7 +476,6 @@ h1,h2,h3{ margin:0; font-weight:400; }
   animation:marqueeScroll 42s linear infinite;
 }
 .marquee-wrap--reverse .marquee__track{ animation-direction:reverse; animation-duration:50s; }
-.marquee:hover .marquee__track{ animation-play-state:paused; }
 .marquee__track.is-dragging{ animation-play-state:paused !important; }
 .marquee__track.is-dragging *{ pointer-events:none; }
 
