@@ -471,6 +471,11 @@ h1,h2,h3{ margin:0; font-weight:400; }
   display:block;
 }
 .countdown__sub{ margin-top:1.4em; }
+.countdown__sub--text{
+  font-family:var(--font-script);
+  font-size:clamp(1.8rem, 4vw, 2.6rem);
+  color:var(--creme);
+}
 .prevenda-patch-img{
   display:inline-block;
   width:clamp(220px, 30vw, 400px);
