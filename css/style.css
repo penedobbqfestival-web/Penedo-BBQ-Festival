@@ -351,7 +351,6 @@ h1,h2,h3{ margin:0; font-weight:400; }
   top:1.2%; right:2%;
   z-index:3;
 }
-.hero__cta-short{ display:none; }
 
 /* brand lockup (usado no footer e no mini-header) */
 .brand-lockup{
@@ -1131,12 +1130,9 @@ h1,h2,h3{ margin:0; font-weight:400; }
   .faq__item{ padding:16px 18px; }
   .faq__item summary{ font-size:.82rem; padding-right:28px; }
   .faq__item p{ font-size:.88rem; }
-  /* no celular a foto fica bem mais baixa (mesma proporção, tela estreita),
-     então o botão precisa ser pequeno e com texto curto para não tampar
-     o título que já vem desenhado na própria imagem */
-  .hero__content .btn{ font-size:.5rem; padding:.4em .85em; letter-spacing:.03em; }
-  .hero__cta-full{ display:none; }
-  .hero__cta-short{ display:inline; }
+  /* a foto de capa do celular já reserva espaço livre ali — texto
+     completo também aqui, só um pouco menor para caber bem */
+  .hero__content .btn{ font-size:.6rem; padding:.45em .9em; letter-spacing:.02em; }
 }
 
 /* reduced motion */
